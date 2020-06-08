@@ -1,0 +1,1305 @@
+<!DOCTYPE html>
+
+<html lang="en" style="font-size: 100px;">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1">
+  <title>研究生应急事件请假条</title>
+
+  <script>
+  function IEVersion() {
+      var userAgent = navigator.userAgent; //取得浏览器的userAgent字符串  
+      var isIE = userAgent.indexOf("compatible") > -1 && userAgent.indexOf("MSIE") > -1; //判断是否IE<11浏览器  
+      var isEdge = userAgent.indexOf("Edge") > -1 && !isIE; //判断是否IE的Edge浏览器  
+      var isIE11 = userAgent.indexOf('Trident') > -1 && userAgent.indexOf("rv:11.0") > -1;
+      if (isIE) {
+        var reIE = new RegExp("MSIE (\\d+\\.\\d+);");
+        reIE.test(userAgent);
+        var fIEVersion = parseFloat(RegExp["$1"]);
+        if (fIEVersion == 7) {
+          return 7;
+        } else if (fIEVersion == 8) {
+          return 8;
+        } else if (fIEVersion == 9) {
+          return 9;
+        } else if (fIEVersion == 10) {
+          return 10;
+        } else {
+          return 6;//IE版本<=7
+        }
+      } else if (isEdge) {
+        return 'edge';//edge
+      } else if (isIE11) {
+        return 11; //IE11  
+      } else {
+        return false;//不是ie浏览器
+      }
+    }
+
+    if (window.location.href.indexOf("opendebug") !== -1) {
+      console.log("调试模式");
+    } else {
+      if (window.location.href.indexOf("icce") !== -1 && IEVersion()) { //IE跳转
+        window.location.href = '/v2/static/html/download.html';
+      } else if (IEVersion()) { // 判断ie版本 低于11的跳转
+        if (IEVersion() != 'edge' && IEVersion() < 11) {
+          setTimeout(function () {
+            window.location.href = '/v2/static/html/download.html';
+          }, 300);
+        }
+      } else {
+        setTimeout(function () {
+          if (!history.pushState) {
+            window.location.href = '/v2/static/html/download.html';
+          }
+        }, 300);
+      }
+    }
+    </script>
+
+  <script type="text/javascript">
+      window.onload=function(){
+        setInterval(function(){
+          var date=new Date();
+          var year=date.getFullYear(); //获取当前年份
+          var mon=date.getMonth()+1; //获取当前月份
+          var da=date.getDate(); //获取当前日
+          var day=date.getDay(); //获取当前星期几
+          var h=date.getHours(); //获取小时
+          var m=date.getMinutes(); //获取分钟
+          var s=date.getSeconds(); //获取秒
+          
+          var d_out=document.getElementById('Date_out'); //出校时间
+          d_out.innerHTML=year+'-'+mon+'-'+da;
+
+          var d_in=document.getElementById('Date_in'); //返校时间
+          d_in.innerHTML=year+'-'+mon+'-'+da;
+
+          var t_out=document.getElementById('Time_out'); //确定出校时间
+          t_out.innerHTML=year+'年'+mon+'月'+da+'日'+' '+h+':'+m+':21';
+
+          var t_in=document.getElementById('Time_in'); //确定返校时间
+          t_in.innerHTML=year+'年'+mon+'月'+da+'日'+' '+h+':'+m+':43'; 
+        },500)
+      }
+  </script>
+
+  <style>
+    .frame_load_img {
+      display: inline-block;
+      width: 50px;
+      animation: haha1 1.5s linear infinite;
+      -webkit-animation: haha1 1s linear infinite;
+    }
+
+    .frame-loader {
+      position: fixed;
+      z-index: 999;
+      top: 50%;
+      left: 50%;
+      transform: translate3d(-50%, -50%, 0);
+    }
+
+
+
+
+
+
+
+
+    .Confirm {
+      -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+      font-family: "Microsoft YaHei";
+      box-sizing: border-box;
+      outline: none !important;
+      cursor: pointer;
+      width: 90% !important;
+      margin-left: 0 !important;
+      height: .4rem;
+      margin: .1rem 0 0 .09rem;
+      color: #fff;
+      background: #4285f4;
+      border: 0;
+      border-radius: .1rem;
+      font-size: .15rem;
+    }
+
+
+    .wxformbtn_center {
+      -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+      text-align: left;
+      line-height: .2rem;
+      color: #333;
+      font-size: .14rem;
+      font-family: "Microsoft YaHei";
+      box-sizing: border-box;
+      display: flex;
+      -webkit-box-flex: 4;
+      flex: 4;
+    }
+
+    .savedraft active {
+      -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+      font-family: "Microsoft YaHei";
+      box-sizing: border-box;
+      outline: none !important;
+      cursor: pointer;
+      border-radius: .2rem !important;
+      margin: .1rem .05rem 0 .05rem !important;
+      width: calc(33% - 0.15rem);
+      height: .4rem;
+      font-size: .15rem;
+      -webkit-box-flex: 1;
+      flex: 1;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      border: .01rem solid #4285f4;
+      background: #fff;
+      color: #4285f4;
+    }
+
+    .wxformbtn m_start_btn {
+      -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+      text-align: left;
+      line-height: .2rem;
+      color: #333;
+      font-size: .14rem;
+      font-family: "Microsoft YaHei";
+      box-sizing: border-box;
+      padding: 0 .03rem;
+      width: 100%;
+      height: .6rem;
+      position: fixed;
+      left: 0;
+      bottom: 0;
+      background: #fff;
+      z-index: 2;
+      display: flex;
+    }
+
+
+
+
+
+
+
+    @-webkit-keyframes haha1 {
+      0% {
+        -webkit-transform: rotate(0deg);
+      }
+
+      25% {
+        -webkit-transform: rotate(90deg);
+      }
+
+      50% {
+        -webkit-transform: rotate(180deg);
+      }
+
+      75% {
+        -webkit-transform: rotate(270deg);
+      }
+
+      100% {
+        -webkit-transform: rotate(360deg);
+      }
+    }
+
+
+
+    #__vconsole .vc-content {
+      line-height: 12px;
+    }
+  </style>
+  <link href="https://service.xidian.edu.cn/v2/static/css/chunk-03c1e51b.29ed22f3944687ebc295.css?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/css/chunk-06846bcf.b734e93b579f29e3786b.css?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/css/chunk-071538bc.85eb94f68aa2a677707d.css?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/css/chunk-098b319e.119e0745418077513b94.css?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/css/chunk-09d2ba7e.37c753b075ba7b3da16d.css?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/css/chunk-0a0940d2.223e08ad86698e29f1fc.css?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/css/chunk-0a25f00e.338c01d1177c13c146d1.css?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/css/chunk-0b134b6a.b734e93b579f29e3786b.css?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/css/chunk-0f5d8f98.153a71cc39183539d666.css?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/css/chunk-138b1688.808acffb37abc81f3161.css?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/css/chunk-1a236cff.5bc00428416e3fb20bee.css?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/css/chunk-1ad4b1ee.1a6133041d2f6e2dde33.css?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/css/chunk-1db9b194.649bf184a65eac0b2c94.css?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/css/chunk-1df9255a.0984504c09577389bb70.css?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/css/chunk-1f1f3f5e.45ae7570b5a443a90eea.css?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/css/chunk-1f7f9f18.744e68ba7fa7541c0d5d.css?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/css/chunk-23d4be1a.3e23f4292060c2783433.css?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/css/chunk-2567a117.b196517ead47ab15b6c3.css?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/css/chunk-298e757a.eb7a617ebd338d3f7526.css?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/css/chunk-2b9bd79e.d82aabbae1c69f240db6.css?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/css/chunk-2cda1c0c.4c750030587af9372947.css?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/css/chunk-2d182ed7.5a83396b2e8fe0fd4a88.css?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/css/chunk-2e1817c7.5c9a3ac03e37e6652920.css?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/css/chunk-2ebbf2e8.d0a97acfc12495ae7462.css?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/css/chunk-302061e2.b2a0c9ec32ecc07a960a.css?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/css/chunk-31725419.fdc22e901788bc18f056.css?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/css/chunk-32503444.7f3834e0a40569a35e65.css?v=1591413377104"
+    rel="prefetch">
+  <link href="./some_files/chunk-36be362b.5bd25ca9f61597f9e455.css" rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/css/chunk-3a7e2760.1f3ba35da3c31bbb7a61.css?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/css/chunk-3b1ce5d8.8a555859fc7b15878de2.css?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/css/chunk-3d27700d.1a9429bdc78138ffc83d.css?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/css/chunk-3d9d0e28.a8b2024b0e88edb204cc.css?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/css/chunk-3ec117f6.85c36fb2b4527de493dc.css?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/css/chunk-4073fe32.13c2b42e41029b61b3d1.css?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/css/chunk-42b91b8e.338c01d1177c13c146d1.css?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/css/chunk-432139e8.5457899cc87e68235915.css?v=1591413377104"
+    rel="prefetch">
+  <link href="./some_files/chunk-443977dc.570761f959df537a66d3.css" rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/css/chunk-449328d6.1c19870dd041b3b165f3.css?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/css/chunk-4565e728.60416c1019c47d99d40a.css?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/css/chunk-46c92a3d.232cebaffffd062551cd.css?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/css/chunk-47957392.8ae4bfa7a3a2ca3331b0.css?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/css/chunk-47beed66.b734e93b579f29e3786b.css?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/css/chunk-4a6d8cf0.a6e65b77ec167ac645d9.css?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/css/chunk-4d53ced6.c0afd36d93063033d4e5.css?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/css/chunk-4ec92e32.8aed8652c902297b16f5.css?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/css/chunk-4fe55158.e1240e82f1197ff77d62.css?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/css/chunk-51041bd2.ed8ab0bca09caf17474e.css?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/css/chunk-53a5a8ba.118052184ce7e0d38654.css?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/css/chunk-53c02af9.7f429f56218f4385a972.css?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/css/chunk-57e6a106.230147e273d26a5814d9.css?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/css/chunk-5884fad7.67f37872c1a76024e64a.css?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/css/chunk-58f1df36.acffaadc21a27278012b.css?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/css/chunk-5912e734.ee62c934b8dcc6e10e82.css?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/css/chunk-59b7ffc8.118052184ce7e0d38654.css?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/css/chunk-59b90768.3a8aafc19700a66a9f3d.css?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/css/chunk-5d2111d6.fe4d4f5a498095273d9c.css?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/css/chunk-5d66aade.af3dbb7713a32fe5371e.css?v=1591413377104"
+    rel="prefetch">
+  <link href="./some_files/chunk-5f82e1a7.92461adac4ebcecbe4d2.css" rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/css/chunk-621d2e04.637bef2d261264f772be.css?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/css/chunk-682919f0.b6c3ab9c1e61d47c3593.css?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/css/chunk-6ba1ddb2.3033823d33f6243f6d63.css?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/css/chunk-6d81e14a.1179737ed5e284d1e398.css?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/css/chunk-6de5407c.0e627f7c4eaa3559c77c.css?v=1591413377104"
+    rel="prefetch">
+  <link href="./some_files/chunk-6f899eb3.ebe638b048ca4b836d02.css" rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/css/chunk-713cafeb.94871c2215bc41edafcf.css?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/css/chunk-7439b4d6.af47be85f04e42f86bdc.css?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/css/chunk-76a3a5d5.c9f4398cd126b008206a.css?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/css/chunk-776b50b1.f05fad44fd6fd7325108.css?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/css/chunk-782c8974.ab434926bdbc2b8f5ab3.css?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/css/chunk-7b2d3c6c.bff96f994aced0f475d5.css?v=1591413377104"
+    rel="prefetch">
+  <link href="./some_files/chunk-7b35c384.4e71256f0bed22409e58.css" rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/css/chunk-7f923980.368c808019a235da4f7e.css?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/css/chunk-8001a662.acb567b6273a19053b22.css?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/css/chunk-80d84884.4de50527fc53e33ce69b.css?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/css/chunk-89ce40fe.36bf50e31571f6b4e2ea.css?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/css/chunk-8f9495bc.c75ab046012cb4b09712.css?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/css/chunk-90b62210.dd57753d703c5219f33b.css?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/css/chunk-917a1616.d86dac67f77dfa4ed520.css?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/css/chunk-96b515b0.af1de07de11ccd8e2f4e.css?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/css/chunk-9c8a29d2.118052184ce7e0d38654.css?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/css/chunk-9cec785e.87d1ba77a0ee23919788.css?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/css/chunk-a36a538e.3175d47c387ab554682e.css?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/css/chunk-af5c54c2.e1240e82f1197ff77d62.css?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/css/chunk-b2fc3418.ac2104192d66f274b67c.css?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/css/chunk-b45af54e.06777e603a6c3920318d.css?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/css/chunk-b6a29bb2.9563ba2d87cf5e4d9509.css?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/css/chunk-be08cc6c.f69a0b1bd80b5a8d11c2.css?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/css/chunk-c93fad88.368e9c5b92e1addc5ec7.css?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/css/chunk-cb49bc10.de2b3acf7ccfa3a55b02.css?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/css/chunk-cd91c9d4.b169dfffa332fce10b24.css?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/css/chunk-d101f7ee.1a2ef9ee9bba32b56b85.css?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/css/chunk-d2260cfa.6bb61678e8a48a0f9ffd.css?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/css/chunk-d54b4936.8ea2927e3e66e1fdc4fa.css?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/css/chunk-dde75352.ab434926bdbc2b8f5ab3.css?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/css/chunk-df93931a.296d104f999eea7c35bc.css?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/css/chunk-e9b4ea36.256cf4c7eecf0ed9a73c.css?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/css/chunk-eb717418.36b6f94fabd88e46f23e.css?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/css/chunk-f48fd4fa.5d818c717414fac2d278.css?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/css/chunk-f532982c.2e6747ba504666fa736a.css?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/css/chunk-f66a2a5c.27c4f042218acde0f9b1.css?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/css/chunk-fe0909e6.7b63b7a295aafa600518.css?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/js/chunk-03c1e51b.20487f4366118dda3971.js?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/js/chunk-06846bcf.4b31376d83807344caa4.js?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/js/chunk-071538bc.e80988fba2694256fd1e.js?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/js/chunk-098b319e.d47a37f19ab26ad9d1b6.js?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/js/chunk-09d2ba7e.bd596e6e1e5debb6a065.js?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/js/chunk-0a0940d2.1bd70fd9933cfe74b207.js?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/js/chunk-0a25f00e.693b044463278e677dd0.js?v=1591413377104"
+    rel="prefetch">
+  <link href="./some_files/chunk-0a2d615e.6cc9797b54844fd5c067.js" rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/js/chunk-0b134b6a.da7a17ec001eadb89ebc.js?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/js/chunk-0f5c621f.85d27bf566b03af1f6cb.js?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/js/chunk-0f5d8f98.1d7372871c64817cf8bb.js?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/js/chunk-138b1688.522b44f20fd4887be6c6.js?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/js/chunk-1a236cff.2860c2ab77ea6df1c82f.js?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/js/chunk-1ad4b1ee.5d7863ceeae9f372e149.js?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/js/chunk-1db9b194.ee7860b9cae1e9aabac5.js?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/js/chunk-1df9255a.00523d50d07504b3a8bf.js?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/js/chunk-1f1f3f5e.0ea4e6478afe4ae6161f.js?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/js/chunk-1f7f9f18.726d8fec5c105af1a350.js?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/js/chunk-23d4be1a.52e016b86151ed7b6fad.js?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/js/chunk-2567a117.3208945f2c86b0141123.js?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/js/chunk-298e757a.3b408fec17df45c39fef.js?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/js/chunk-2b9bd79e.5e10462ce3aedcd70a36.js?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/js/chunk-2cda1c0c.81f0dc8ede5665eebbc7.js?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/js/chunk-2d182ed7.24ddc129d156907b6094.js?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/js/chunk-2d229604.e3ae121bf08c7fdfc585.js?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/js/chunk-2e1817c7.5d41bd11d6c7a3e97192.js?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/js/chunk-2ebbf2e8.eb38563e2ce91e599bb0.js?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/js/chunk-302061e2.f6aec5cf317cc301e2ec.js?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/js/chunk-31725419.878e344d5066b45812e6.js?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/js/chunk-32503444.88b0aae05d25918b5c54.js?v=1591413377104"
+    rel="prefetch">
+  <link href="./some_files/chunk-36be362b.b5721cc76bc11d48ff72.js" rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/js/chunk-3a7e2760.74da8c20b89656d3953e.js?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/js/chunk-3b1ce5d8.8c8776c8ec70f0a858c7.js?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/js/chunk-3d27700d.3720fb3e59d35c5c6f5f.js?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/js/chunk-3d9d0e28.370036953b9136a11c97.js?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/js/chunk-3ec117f6.8f66d09cef486a328d23.js?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/js/chunk-4073fe32.5b7bbf3b1141a80cc814.js?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/js/chunk-42b91b8e.457f933a2726b09c3050.js?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/js/chunk-432139e8.81b78341fc5af0ac367f.js?v=1591413377104"
+    rel="prefetch">
+  <link href="./some_files/chunk-443977dc.98ae97666ff0be6db803.js" rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/js/chunk-449328d6.7de08c65f7edbdf48219.js?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/js/chunk-4565e728.d42eae6ad601d0912a5c.js?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/js/chunk-46c92a3d.3bb13fdec600ba365c94.js?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/js/chunk-47957392.e9955a8f22cae2c3f913.js?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/js/chunk-47beed66.2bd512392f807748ff03.js?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/js/chunk-4a6d8cf0.c0f9169a4cad5774b3ef.js?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/js/chunk-4d53ced6.f21954f7cb4049d783b5.js?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/js/chunk-4ec92e32.d7005d381376cb928332.js?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/js/chunk-4fe55158.6371844da389f8faed6a.js?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/js/chunk-51041bd2.7734ac6eddb386cf6452.js?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/js/chunk-520a8c66.b5071abe96a08fdfa4fc.js?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/js/chunk-53a5a8ba.60207694581b9a7f0624.js?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/js/chunk-53c02af9.81962a59211151640456.js?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/js/chunk-57e6a106.c183e1eaeac39039c300.js?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/js/chunk-582f4b2a.5f6d0479713cc58cd41f.js?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/js/chunk-5884fad7.d2a18c6041b808e3b025.js?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/js/chunk-58f1df36.7678b7235571d5fddfa5.js?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/js/chunk-5912e734.c35871f01ee5e20a2e85.js?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/js/chunk-59b7ffc8.6d0bf4bf341449c49898.js?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/js/chunk-59b90768.f938901d49894f40b6da.js?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/js/chunk-5d2111d6.36db6ffc8ce86cbb4772.js?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/js/chunk-5d66aade.bc4f488cfe2fda3e0c89.js?v=1591413377104"
+    rel="prefetch">
+  <link href="./some_files/chunk-5ed06835.d0dcc6d5ba3e3a547290.js" rel="prefetch">
+  <link href="./some_files/chunk-5f82e1a7.7c36dac1cb10e2302043.js" rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/js/chunk-621d2e04.f81713d4593908f1b89b.js?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/js/chunk-682919f0.ddeed904ef28865c144d.js?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/js/chunk-6ba1ddb2.936e996cc290be57a49c.js?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/js/chunk-6d81e14a.046b9c3ec005e4e1ff46.js?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/js/chunk-6de5407c.357cd2c1a38909aa91d5.js?v=1591413377104"
+    rel="prefetch">
+  <link href="./some_files/chunk-6f899eb3.3aa9a361c1cb507a8c35.js" rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/js/chunk-713cafeb.6b92270ff335d13e7ae7.js?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/js/chunk-7439b4d6.5b9642f979994d92f8cd.js?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/js/chunk-76a3a5d5.5bfb999ba698f8190dfc.js?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/js/chunk-776b50b1.333a108f909eaf6b27c5.js?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/js/chunk-782c8974.2fe0bd884ac16789184d.js?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/js/chunk-7b2d3c6c.402a51c55f259a429f66.js?v=1591413377104"
+    rel="prefetch">
+  <link href="./some_files/chunk-7b35c384.f2e117cc2afb4746ee7a.js" rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/js/chunk-7f923980.6da49dbb8d3cfd63ad1a.js?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/js/chunk-8001a662.e2c2897d0c47e86d7594.js?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/js/chunk-80d84884.18651f9424cf97d1c854.js?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/js/chunk-89ce40fe.f5b66a14b6c1f0307a66.js?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/js/chunk-8f9495bc.6857371972308798c5ee.js?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/js/chunk-90b62210.a1bb245d3ce6ce4a45a4.js?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/js/chunk-917a1616.2dd5380087f41129b69a.js?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/js/chunk-96b515b0.c2441495ecd3195d0c58.js?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/js/chunk-9c8a29d2.1e46c6478ed2e0b5777a.js?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/js/chunk-9cec785e.f1846a3d6f8353240817.js?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/js/chunk-a36a538e.1010c0408724204eb432.js?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/js/chunk-af5c54c2.4144876bb4223d09a04d.js?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/js/chunk-b2fc3418.33c9effcbbc8a90588b3.js?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/js/chunk-b45af54e.19588dfc5b7fb2df48db.js?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/js/chunk-b6a29bb2.506137ab02cde49339f8.js?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/js/chunk-be08cc6c.5a1dfbed2e1d1a5ebd6a.js?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/js/chunk-c93fad88.16e66fb513bdb908559d.js?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/js/chunk-cb49bc10.d6ff681c48d6cadb2edc.js?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/js/chunk-cd91c9d4.7b28e43997e330bebe09.js?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/js/chunk-d101f7ee.3c955497dbe0c3a2c169.js?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/js/chunk-d2260cfa.38850b45d11f028e1e64.js?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/js/chunk-d54b4936.43c957cf1d34e32d2cb6.js?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/js/chunk-dde75352.98d3b9b4b8a403e3a4e7.js?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/js/chunk-df93931a.9f9e97f9c6467c434eff.js?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/js/chunk-e9b4ea36.bf9107f6817561f9eb27.js?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/js/chunk-eb717418.04c2fde62476720431f5.js?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/js/chunk-f48fd4fa.d648cb27268a8704a1ae.js?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/js/chunk-f532982c.1b788437aa9acb67e798.js?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/js/chunk-f66a2a5c.2d5dbca44c0c80a2c15d.js?v=1591413377104"
+    rel="prefetch">
+  <link href="https://service.xidian.edu.cn/v2/static/js/chunk-fe0909e6.e72253f1c504722cccce.js?v=1591413377104"
+    rel="prefetch">
+  <link href="./some_files/app.6e6e2a90ff032a37f5d0.css" rel="preload" as="style">
+  <link href="./some_files/chunk-vendors.c98b154e532fb6ff3161.css" rel="preload" as="style">
+  <link href="./some_files/app.5f5b4c9ea492ec3b215c.js" rel="preload" as="script">
+  <link href="./some_files/chunk-vendors.1aa9495514a488824bed.js" rel="preload" as="script">
+  <link href="./some_files/chunk-vendors.c98b154e532fb6ff3161.css" rel="stylesheet">
+  <link href="./some_files/app.6e6e2a90ff032a37f5d0.css" rel="stylesheet">
+  <link rel="shortcut icon" href="https://imgservice.xidian.edu.cn/image/0/1931.png">
+  <link rel="stylesheet" type="text/css" href="./some_files/chunk-6f899eb3.ebe638b048ca4b836d02.css">
+  <script charset="utf-8" src="./some_files/chunk-6f899eb3.3aa9a361c1cb507a8c35.js"></script>
+  <script charset="utf-8" src="./some_files/chunk-5ed06835.d0dcc6d5ba3e3a547290.js"></script>
+  <script charset="utf-8" src="./some_files/chunk-0a2d615e.6cc9797b54844fd5c067.js"></script>
+  <link rel="stylesheet" type="text/css" href="./some_files/chunk-5f82e1a7.92461adac4ebcecbe4d2.css">
+  <script charset="utf-8" src="./some_files/chunk-5f82e1a7.7c36dac1cb10e2302043.js"></script>
+  <link rel="stylesheet" type="text/css" href="./some_files/chunk-36be362b.5bd25ca9f61597f9e455.css">
+  <script charset="utf-8" src="./some_files/chunk-36be362b.b5721cc76bc11d48ff72.js"></script>
+  <link rel="shortcut icon" href="https://imgservice.xidian.edu.cn/image/0/1931.png">
+  <link rel="stylesheet" type="text/css" href="./some_files/chunk-443977dc.570761f959df537a66d3.css">
+  <script charset="utf-8" src="./some_files/chunk-443977dc.98ae97666ff0be6db803.js"></script>
+  <link rel="shortcut icon" href="https://imgservice.xidian.edu.cn/image/0/1931.png">
+  <link rel="shortcut icon" href="https://imgservice.xidian.edu.cn/image/0/1931.png">
+  <link rel="stylesheet" type="text/css" href="./some_files/chunk-7b35c384.4e71256f0bed22409e58.css">
+  <script charset="utf-8" src="./some_files/chunk-7b35c384.f2e117cc2afb4746ee7a.js"></script>
+  <style id="printpage">
+    @page {
+      margin: undefinedmm undefinedmm undefinedmm undefinedmm;
+      size: A4 portrait;
+    }
+  </style>
+  <style id="printpage">
+    @page {
+      margin: undefinedmm undefinedmm undefinedmm undefinedmm;
+      size: A4 portrait;
+    }
+  </style>
+  <style id="__web-inspector-hide-shortcut-style__">
+    .__web-inspector-hide-shortcut__,
+    .__web-inspector-hide-shortcut__ *,
+    .__web-inspector-hidebefore-shortcut__::before,
+    .__web-inspector-hideafter-shortcut__::after {
+      visibility: hidden !important;
+    }
+  </style>
+</head>
+
+<body class="" style="cursor: default;">
+  <div id="wxform">
+    <div id="showExamine">
+      <div class="topT top">
+        <div class="W_onetop">
+          申请表单
+          <p style="display: none;">1</p>
+        </div> <a href="javascript:;" class="showBpmn">办事流程</a> <a href="javascript:;" class="history">处理记录</a> <span
+          class="line" style="width: 16%;"></span>
+      </div>
+      <div class="forms">
+        <div style="height: 50px;"></div>
+        <div class="toptabla">
+          <div class="toptabla_con">
+            <div class="formsTop_left"><img
+                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFgAAABYCAYAAABxlTA0AAAFrUlEQVR4Xu2cW2gcVRjH/99s1zbZ2Uot6ot9EcRLKZSK2toHsxtsrDdsVUTwqUpfvCAtVbOzwU27kxopFa2CpQUfRASlNkHofWdjRYooingpKKJUvIANaPcSmzbzyZQUkk1s9pydL860Z173O//vf37nn2TnnMwQzCVKgETVjTgMYOEQGMAGsDABYXmTYANYmICwvEmwASxMQFjeJNgAFiYgLG8SbAALExCWDyXBK/v/TM8da3sSjIcA3CzsWVCefgR4IOGP7Tzcc/kPYTRqGXCmr3Y3mN8kYFEYhiKiwQw4Zcfe2qqflgBn3Np6Au9s1URkxzPe8vL2ulb8aQPOuNUuAg600jwWYxkveXm7W9erFuAV27mtbaT2K4AFUxoTvgXjCMB/6Zqa7XHMSMKi24nRMV1vy6JlR7pTX+r40gKccaubCHi5sSEBz5Yc+1UdI1EYk91aXQUf7wOY3+DnsJdLdYGIVX1qAc661eMAbpjcjJ/xnPQOVQNRq+9wq0st4Aug4TDCQpfXbR9S9asLuHElj3uOfZNq86jWZ93KLoCeaPDX7zn2C6qewwHM2Obl7U2qzaNan+mr3U/Mgw3+3vMc+xFVz+EAJurxcqmiavOo1me3VLKwqDTRH4EHS076AVXP4QAGFTwn1avaPKr1nW71TgYaft/ygOek16h6Dgkw93pOuqDaPKr1498mDjb8Ed/rOem1qp4N4GmIxR5wsDmkmoRW6z95/spKsxqxBZzZXFlsJbCbQYubnWyIdb8xs1POp/fMpBlLwIUCW0eTtW8A3DjTBCU/n+Mnrj3U0/bThXrEEvD4/kVdEl4z2kx0TzmX2nfRAQ4mlHUrHwCk/FWnGXBN1pz0z5y5bqiw4IIbUbFMcABg9Ws89/SpWhEWloHP3ev7TYLRLyMQGAkAvxD5W0q5+d/PJBZbwDNNLCqfG8DCK2EAG8DCBITlTYINYGECwvImwQawMAFheZNgA3h6Aufu5Co1F4wlRGCfoXwMPlGZCAkCRn2gVHbsV8LiHtsES+5FMLAhLMixBCy+m8b4ysvbS8NIcSwBi+8HE73u5VJPX7KAg4lLnWgwYZ89mlr3YYFC2W+OZYInJivsMzmV87ZmEh57wM1M8v+sMYCF6RvABrAwAWF5k2ADWJiAsLxJsAEsTEBYPtYJzhQrDxJhiSQjIqqPMr39sZP6XadPbAF3upXNDOrRmbTGmJO+lbhlqLvtZ9WxsQTcUeB5VrI2ojrZ1urZ9Zx0XlUjloAfLvBlw8n6MMC26oR163Wf24sl4ABStlhfA/LfAdCmC63pcQRvZF7q3mMbSPmnJraAAzgd/fVrrLO8hAlkEYf6z3/sBwdRmEMWnSzl2o81vRgNhbEGrDvp2RxnAAvTNoAvOcDmSc//XPJwnpNjLnr59GzdQAjnF+jcWr2Lfeyf2IhAe0pOKngnkdIVDmDgI8+xp32ZhZKbiBRn3UoBoBcn2mHQG2Un9ZSqRV3AfwC4elIz5ju8fPqoqoGo1d9X4PZasnYCwMJJCWY8VsrbwXd4pUsPcF9tB5gbV/NvJqurnGv/VMlBhIpXFSpXjSUxyKDlDba+mzt6esX+3oWnVO1qAV5VrC86S36wylMv5l1MNGSBz+1k+SBL1dRs1ZPPbAG+T4kFgH8rCOsBXDGlP1trvXz7Xh1fWoCDRp1udSMD23SaxmkMMw6U8/ZqXc/agIOGmWJ1NxEe120e+XGEr0fmpW7T2c84P7eWAI9D7ifCc5GHpWyQB/wz9qNDBfpHeeiEAS0DDrQ6ivXlFvFGgIPHZIOnKmN7EfA5M7Z7efvdMCYRCuDzRoK3AVrglQy6HuBkGAZnR8NiEJ9gxmcW+QdLufnDYfUNFXBYpi4mHQNYeDUNYANYmICwvEmwASxMQFjeJNgAFiYgLG8SbAALExCWNwk2gIUJCMubBAsD/heGWaSG+I43tQAAAABJRU5ErkJggg=="
+                alt="">
+              <p class="">研究生应急事件请假条</p>
+            </div>
+            <!---->
+          </div>
+        </div>
+        <div>
+          <div class="m_formList">
+            <!---->
+            <!---->
+            <!---->
+            <!---->
+            <!---->
+            <!---->
+            <!---->
+            <!---->
+            <!---->
+            <!---->
+            <!---->
+            <!---->
+            <!---->
+            <!---->
+            <!---->
+            <!---->
+            <!---->
+            <!---->
+            <!---->
+            <!---->
+            <!---->
+            <!---->
+            <!---->
+            <!---->
+            <!---->
+            <div class="pluginnames"><span>姓名</span>
+              <!---->
+            </div>
+            <!---->
+            <div class="plugin-allbox dplugin-mobile-rinput">
+              <div data-key="User_52" class="dplugin-box"
+                style="margin-top: 0px; margin-bottom: 0px; text-align: left;">
+                <div class="dplugin-mobile dplugin-doneplugin dplugin-mobile-dinput"><span
+                    class="doneplugin-value doneplugin-value-userview"
+                    style="font-size: 14px; font-family: 微软雅黑; font-weight: normal; font-style: normal; color: rgb(96, 98, 102); text-decoration: none; text-align: left; line-height: 20px; letter-spacing: 0px;">
+                    楚雪萧
+                  </span></div>
+              </div>
+              <!---->
+            </div>
+            <div class="pluginnames"><span>学号</span>
+              <!---->
+            </div>
+            <!---->
+            <div class="plugin-allbox dplugin-mobile-rinput">
+              <div data-key="User_53" class="dplugin-box"
+                style="margin-top: 0px; margin-bottom: 0px; text-align: left;">
+                <div class="dplugin-mobile dplugin-doneplugin dplugin-mobile-dinput"><span
+                    class="doneplugin-value doneplugin-value-userview"
+                    style="font-size: 14px; font-family: 微软雅黑; font-weight: normal; font-style: normal; color: rgb(96, 98, 102); text-decoration: none; text-align: left; line-height: 20px; letter-spacing: 0px;">
+                    17111212666
+                  </span></div>
+              </div>
+              <!---->
+            </div>
+            <div class="pluginnames"><span>身份证号</span>
+              <!---->
+            </div>
+            <!---->
+            <div class="plugin-allbox dplugin-mobile-rinput">
+              <div data-key="User_55" class="dplugin-box"
+                style="margin-top: 0px; margin-bottom: 0px; text-align: left;">
+                <div class="dplugin-mobile dplugin-doneplugin dplugin-mobile-dinput"><span
+                    class="doneplugin-value doneplugin-value-userview"
+                    style="font-size: 14px; font-family: 微软雅黑; font-weight: normal; font-style: normal; color: rgb(96, 98, 102); text-decoration: none; text-align: left; line-height: 20px; letter-spacing: 0px;">
+                    450100202002026666
+                  </span></div>
+              </div>
+              <!---->
+            </div>
+            <div class="pluginnames"><span>学院</span>
+              <!---->
+            </div>
+            <!---->
+            <div class="plugin-allbox dplugin-mobile-rinput">
+              <div data-key="User_56" class="dplugin-box"
+                style="margin-top: 0px; margin-bottom: 0px; text-align: left;">
+                <div class="dplugin-mobile dplugin-doneplugin dplugin-mobile-dinput"><span
+                    class="doneplugin-value doneplugin-value-userview"
+                    style="font-size: 14px; font-family: 微软雅黑; font-weight: normal; font-style: normal; color: rgb(96, 98, 102); text-decoration: none; text-align: left; line-height: 20px; letter-spacing: 0px;">
+                    微电子学院
+                  </span></div>
+              </div>
+              <!---->
+            </div>
+            <div class="pluginnames"><span>导师姓名</span>
+              <!---->
+            </div>
+            <!---->
+            <div class="plugin-allbox">
+              <div data-key="UserSearch_79" class="dplugin-box"
+                style="margin-top: 0px; margin-bottom: 0px; text-align: left;">
+                <div class="dplugin-mobile dplugin-mobile-dinput dplugin-mobile-rinput"><span
+                    class="doneplugin-value doneplugin-value-userview"
+                    style="font-size: 14px; font-family: 微软雅黑; font-weight: normal; font-style: normal; color: rgb(96, 98, 102); text-decoration: none; text-align: left; line-height: 20px; letter-spacing: 0px;">
+                    张伟
+                  </span></div>
+              </div>
+              <!---->
+            </div>
+            <div class="pluginnames"><span>辅导员姓名</span>
+              <!---->
+            </div>
+            <!---->
+            <div class="plugin-allbox dplugin-mobile-rinput">
+              <div data-key="Input_59" class="dplugin-box"
+                style="margin-top: 0px; margin-bottom: 0px; text-align: left;">
+                <div class="dplugin-mobile dplugin-mobile-dinput dinput-vie dplugin-mobile-dinput-focusalert"
+                  style="font-size: 14px; font-family: 微软雅黑; font-weight: normal; font-style: normal; color: rgb(96, 98, 102); text-decoration: none; text-align: left; line-height: 20px; letter-spacing: 0px;">
+                  <span
+                    style="font-size: 14px; font-family: 微软雅黑; font-weight: normal; font-style: normal; color: rgb(96, 98, 102); text-decoration: none; text-align: left; line-height: 20px; letter-spacing: 0px;">
+                    李华
+                  </span></div>
+              </div>
+              <!---->
+            </div>
+            <div class="pluginnames"><span>本人手机号</span>
+              <!---->
+            </div>
+            <!---->
+            <div class="plugin-allbox dplugin-mobile-rinput">
+              <div data-key="User_63" class="dplugin-box"
+                style="margin-top: 0px; margin-bottom: 0px; text-align: left;">
+                <div class="dplugin-mobile dplugin-doneplugin dplugin-mobile-dinput"><span
+                    class="doneplugin-value doneplugin-value-userview"
+                    style="font-size: 14px; font-family: 微软雅黑; font-weight: normal; font-style: normal; color: rgb(96, 98, 102); text-decoration: none; text-align: left; line-height: 20px; letter-spacing: 0px;">
+                    17792814909
+                  </span></div>
+              </div>
+              <!---->
+            </div>
+            <!---->
+            <div class="pluginnames"><span>紧急联系人手机号</span>
+              <!---->
+            </div>
+            <!---->
+            <div class="plugin-allbox dplugin-mobile-rinput">
+              <div data-key="Input_61" class="dplugin-box"
+                style="margin-top: 0px; margin-bottom: 0px; text-align: left;">
+                <div class="dplugin-mobile dplugin-mobile-dinput dinput-vie dplugin-mobile-dinput-focusalert"
+                  style="font-size: 14px; font-family: 微软雅黑; font-weight: normal; font-style: normal; color: rgb(96, 98, 102); text-decoration: none; text-align: left; line-height: 20px; letter-spacing: 0px;">
+                  <span
+                    style="font-size: 14px; font-family: 微软雅黑; font-weight: normal; font-style: normal; color: rgb(96, 98, 102); text-decoration: none; text-align: left; line-height: 20px; letter-spacing: 0px;">
+                    18691492200
+                  </span></div>
+              </div>
+              <!---->
+            </div>
+            <div class="pluginnames"><span>宿舍号</span>
+              <!---->
+            </div>
+            <!---->
+            <div class="plugin-allbox dplugin-mobile-rinput">
+              <div data-key="Input_60" class="dplugin-box"
+                style="margin-top: 0px; margin-bottom: 0px; text-align: left;">
+                <div class="dplugin-mobile dplugin-mobile-dinput dinput-vie dplugin-mobile-dinput-focusalert"
+                  style="font-size: 14px; font-family: 微软雅黑; font-weight: normal; font-style: normal; color: rgb(96, 98, 102); text-decoration: none; text-align: left; line-height: 20px; letter-spacing: 0px;">
+                  <span
+                    style="font-size: 14px; font-family: 微软雅黑; font-weight: normal; font-style: normal; color: rgb(96, 98, 102); text-decoration: none; text-align: left; line-height: 20px; letter-spacing: 0px;">
+                    北校区新科技楼-5#509
+                  </span></div>
+              </div>
+              <!---->
+            </div>
+            <div class="pluginnames"><span>请假类型</span>
+              <!---->
+            </div>
+            <!---->
+            <div class="plugin-allbox">
+              <div data-key="Radio_75" class="dplugin-box"
+                style="margin-top: 0px; margin-bottom: 0px; text-align: left;">
+                <div id="dradioviewRadio_75" class="dplugin-mobile dplugin-mobile-dRadio dplugin-radio"
+                  style="white-space: inherit;"><label for="607_Radio_75_0" class="dradiostyle"
+                    style="font-size: 14px; font-family: 微软雅黑; font-weight: normal; font-style: normal; color: rgb(96, 98, 102); text-decoration: none; text-align: left; line-height: 20px; letter-spacing: 0px; display: inline; margin-right: 10px;"><i
+                      class="icon iconfont iconfontcolor icondanxuanxuanzhong-copy"></i> <input type="radio"
+                      id="607_Radio_75_0" name="Radio_75607" disabled="disabled"
+                      class="dplugin-mobile-newRadio dplugin_readonly_input" value="1"> <span
+                      style="font-size: 14px; font-family: 微软雅黑; font-weight: normal; font-style: normal; color: rgb(96, 98, 102); text-decoration: none; text-align: left; line-height: 20px; letter-spacing: 0px;">病假</span></label><label
+                    for="607_Radio_75_1" class="dradiostyle"
+                    style="font-size: 14px; font-family: 微软雅黑; font-weight: normal; font-style: normal; color: rgb(96, 98, 102); text-decoration: none; text-align: left; line-height: 20px; letter-spacing: 0px; display: inline; margin-right: 10px;"><i
+                      class="icon iconfont iconfontcolor icondanxuanxuanzhongcopy-"></i> <input type="radio"
+                      id="607_Radio_75_1" name="Radio_75607" disabled="disabled"
+                      class="dplugin-mobile-newRadio dplugin_readonly_input" value="2"> <span
+                      style="font-size: 14px; font-family: 微软雅黑; font-weight: normal; font-style: normal; color: rgb(96, 98, 102); text-decoration: none; text-align: left; line-height: 20px; letter-spacing: 0px;">事假</span></label><label
+                    for="607_Radio_75_2" class="dradiostyle"
+                    style="font-size: 14px; font-family: 微软雅黑; font-weight: normal; font-style: normal; color: rgb(96, 98, 102); text-decoration: none; text-align: left; line-height: 20px; letter-spacing: 0px; display: inline; margin-right: 0px;"><i
+                      class="icon iconfont iconfontcolor icondanxuanxuanzhong-copy"></i> <input type="radio"
+                      id="607_Radio_75_2" name="Radio_75607" disabled="disabled"
+                      class="dplugin-mobile-newRadio dplugin_readonly_input" value="3"> <span
+                      style="font-size: 14px; font-family: 微软雅黑; font-weight: normal; font-style: normal; color: rgb(96, 98, 102); text-decoration: none; text-align: left; line-height: 20px; letter-spacing: 0px;">公假</span></label>
+                  <!---->
+                </div>
+              </div>
+              <!---->
+            </div>
+            <div class="pluginnames"><span>是否外出</span>
+              <!---->
+            </div>
+            <!---->
+            <div class="plugin-allbox">
+              <div data-key="Radio_74" class="dplugin-box"
+                style="margin-top: 0px; margin-bottom: 0px; text-align: left;">
+                <div id="dradioviewRadio_74" class="dplugin-mobile dplugin-mobile-dRadio dplugin-radio"
+                  style="white-space: inherit;"><label for="607_Radio_74_0" class="dradiostyle"
+                    style="font-size: 14px; font-family: 微软雅黑; font-weight: normal; font-style: normal; color: rgb(96, 98, 102); text-decoration: none; text-align: left; line-height: 20px; letter-spacing: 0px; display: inline; margin-right: 10px;"><i
+                      class="icon iconfont iconfontcolor icondanxuanxuanzhongcopy-"></i> <input type="radio"
+                      id="607_Radio_74_0" name="Radio_74607" disabled="disabled"
+                      class="dplugin-mobile-newRadio dplugin_readonly_input" value="1"> <span
+                      style="font-size: 14px; font-family: 微软雅黑; font-weight: normal; font-style: normal; color: rgb(96, 98, 102); text-decoration: none; text-align: left; line-height: 20px; letter-spacing: 0px;">是</span></label><label
+                    for="607_Radio_74_1" class="dradiostyle"
+                    style="font-size: 14px; font-family: 微软雅黑; font-weight: normal; font-style: normal; color: rgb(96, 98, 102); text-decoration: none; text-align: left; line-height: 20px; letter-spacing: 0px; display: inline; margin-right: 0px;"><i
+                      class="icon iconfont iconfontcolor icondanxuanxuanzhong-copy"></i> <input type="radio"
+                      id="607_Radio_74_1" name="Radio_74607" disabled="disabled"
+                      class="dplugin-mobile-newRadio dplugin_readonly_input" value="2"> <span
+                      style="font-size: 14px; font-family: 微软雅黑; font-weight: normal; font-style: normal; color: rgb(96, 98, 102); text-decoration: none; text-align: left; line-height: 20px; letter-spacing: 0px;">否</span></label>
+                  <!---->
+                </div>
+              </div>
+              <!---->
+            </div>
+            <!---->
+            <div class="pluginnames"><span>请假事由</span>
+              <!---->
+            </div>
+            <!---->
+            <div class="plugin-allbox dplugin-mobile-rinput">
+              <div data-key="MultiInput_22" class="dplugin-box"
+                style="margin-top: 0px; margin-bottom: 0px; text-align: left;">
+                <div class="dplugin-mobile dplugin-mobile-dmultiInputs">
+                  <div class="dplugin-content-wrap"
+                    style="font-size: 14px; font-family: 微软雅黑; font-weight: normal; font-style: normal; color: rgb(96, 98, 102); text-decoration: none; text-align: left; line-height: 20px; letter-spacing: 0px; min-height: 46px;">
+                    答辩完了出去嗨</div>
+                </div>
+              </div>
+              <!---->
+            </div>
+            <div class="pluginnames"><span>出校时间</span>
+              <!---->
+            </div>
+            <!---->
+            <div class="plugin-allbox">
+              <div data-key="Calendar_27" class="dplugin-box"
+                style="margin-top: 0px; margin-bottom: 0px; text-align: left;">
+                <div class="dplugin-mobile dplugin-mobile-dCalendar dCalendar-vie"
+                  style="font-size: 14px; font-family: 微软雅黑; font-weight: normal; font-style: normal; color: rgb(96, 98, 102); text-decoration: none; text-align: left; line-height: 20px; letter-spacing: 0px;">
+                  <span
+                    style="font-size: 14px; font-family: 微软雅黑; font-weight: normal; font-style: normal; color: rgb(96, 98, 102); text-decoration: none; text-align: left; line-height: 20px; letter-spacing: 0px;"><div id="Date_out"></span>
+                </div>
+              </div>
+              <!---->
+            </div>
+            <div class="pluginnames"><span>返校时间</span>
+              <!---->
+            </div>
+            <!---->
+            <div class="plugin-allbox">
+              <div data-key="Calendar_28" class="dplugin-box"
+                style="margin-top: 0px; margin-bottom: 0px; text-align: left;">
+                <div class="dplugin-mobile dplugin-mobile-dCalendar dCalendar-vie"
+                  style="font-size: 14px; font-family: 微软雅黑; font-weight: normal; font-style: normal; color: rgb(96, 98, 102); text-decoration: none; text-align: left; line-height: 20px; letter-spacing: 0px;">
+                  <span
+                    style="font-size: 14px; font-family: 微软雅黑; font-weight: normal; font-style: normal; color: rgb(96, 98, 102); text-decoration: none; text-align: left; line-height: 20px; letter-spacing: 0px;"><div id="Date_in"></div></span>
+                </div>
+              </div>
+              <!---->
+            </div>
+            <!---->
+            <div class="pluginnames"><span>请假总时长</span>
+              <!---->
+            </div>
+            <!---->
+            <div class="plugin-allbox dplugin-mobile-rinput">
+              <div data-key="Count_77" class="dplugin-box"
+                style="margin-top: 0px; margin-bottom: 0px; text-align: left;">
+                <div class="dplugin-mobile dplugin-mobile-dinput dinput-vie"
+                  style="font-size: 14px; font-family: 微软雅黑; font-weight: normal; font-style: normal; color: rgb(96, 98, 102); text-decoration: none; text-align: left; line-height: 20px; letter-spacing: 0px;">
+                  <span>1</span></div>
+              </div>
+              <!---->
+            </div>
+            <div class="pluginnames"><span>当前所在地</span>
+              <!---->
+            </div>
+            <!---->
+            <div class="plugin-allbox" plugin="[object Object]">
+              <div data-key="Region_65" class="dplugin-box"
+                style="margin-top: 0px; margin-bottom: 0px; text-align: left;">
+                <div class="dplugin-mobile dplugin-mobile-dregion"
+                  style="font-size: 14px; font-family: 微软雅黑; font-weight: normal; font-style: normal; color: rgb(96, 98, 102); text-decoration: none; text-align: left; line-height: 20px; letter-spacing: 0px;">
+                  <span style="color: rgb(66, 133, 244);">
+                    陕西省/西安市/雁塔区/电子城街道中国电子教育学会(电子大道中段)西安电子科技大学北校区
+                  </span></div>
+                <!---->
+              </div>
+              <!---->
+            </div>
+            <div class="pluginnames"><span>请假期间所在地</span>
+              <!---->
+            </div>
+            <!---->
+            <div class="plugin-allbox" plugin="[object Object]">
+              <div data-key="Region_32" class="dplugin-box"
+                style="margin-top: 0px; margin-bottom: 0px; text-align: left;">
+                <div class="dplugin-mobile dplugin-mobile-dregion"
+                  style="font-size: 14px; font-family: 微软雅黑; font-weight: normal; font-style: normal; color: rgb(96, 98, 102); text-decoration: none; text-align: left; line-height: 20px; letter-spacing: 0px;">
+                  <span>
+                    陕西省/西安市/未央区/大明宫西
+                  </span></div>
+                <!---->
+              </div>
+              <!---->
+            </div>
+            <div class="pluginnames"><span>交通工具</span>
+              <!---->
+            </div>
+            <!---->
+            <div class="plugin-allbox">
+              <div data-key="Select_70" class="dplugin-box"
+                style="position: relative; overflow: hidden; margin-top: 0px; margin-bottom: 0px; text-align: left;">
+                <!---->
+                <div class="dplugin-mobile dplugin-mobile-dSelect dselectview">
+                  <div>
+                    <!----> <span class="doneplugin-value"
+                      style="font-size: 14px; font-family: 微软雅黑; font-weight: normal; font-style: normal; color: rgb(96, 98, 102); text-decoration: none; text-align: left; line-height: 20px; letter-spacing: 0px;">地铁</span>
+                  </div>
+                </div>
+              </div>
+              <!---->
+            </div>
+            <div class="pluginnames"><span>具体班次</span>
+              <!---->
+            </div>
+            <!---->
+            <div class="plugin-allbox dplugin-mobile-rinput">
+              <div data-key="Input_71" class="dplugin-box"
+                style="margin-top: 0px; margin-bottom: 0px; text-align: left;">
+                <div class="dplugin-mobile dplugin-mobile-dinput dinput-vie dplugin-mobile-dinput-focusalert"
+                  style="font-size: 14px; font-family: 微软雅黑; font-weight: normal; font-style: normal; color: rgb(96, 98, 102); text-decoration: none; text-align: left; line-height: 20px; letter-spacing: 0px;">
+                  <span
+                    style="font-size: 14px; font-family: 微软雅黑; font-weight: normal; font-style: normal; color: rgb(96, 98, 102); text-decoration: none; text-align: left; line-height: 20px; letter-spacing: 0px;">
+
+                  </span></div>
+              </div>
+              <!---->
+            </div>
+            <div class="pluginnames"><span>导师意见</span>
+              <!---->
+            </div>
+            <!---->
+            <div class="plugin-allbox dplugin-mobile-rinput">
+              <div data-key="MultiInput_34" class="dplugin-box"
+                style="margin-top: 0px; margin-bottom: 0px; text-align: left;">
+                <div class="dplugin-mobile dplugin-mobile-dmultiInputs">
+                  <div class="dplugin-content-wrap"
+                    style="font-size: 14px; font-family: 微软雅黑; font-weight: normal; font-style: normal; color: rgb(96, 98, 102); text-decoration: none; text-align: left; line-height: 20px; letter-spacing: 0px; min-height: 46px;">
+                    行吧</div>
+                </div>
+              </div>
+              <!---->
+            </div>
+            <!---->
+            <div class="pluginnames"><span>导师审批人</span>
+              <!---->
+            </div>
+            <!---->
+            <div class="plugin-allbox dplugin-mobile-rinput">
+              <div data-key="User_38" class="dplugin-box"
+                style="margin-top: 0px; margin-bottom: 0px; text-align: left;">
+                <div class="dplugin-mobile dplugin-doneplugin dplugin-mobile-dinput"><span
+                    class="doneplugin-value doneplugin-value-userview"
+                    style="font-size: 14px; font-family: 微软雅黑; font-weight: normal; font-style: normal; color: rgb(96, 98, 102); text-decoration: none; text-align: left; line-height: 20px; letter-spacing: 0px;">
+                    张伟
+                  </span></div>
+              </div>
+              <!---->
+            </div>
+            <!---->
+            <div class="pluginnames"><span>导师审批时间</span>
+              <!---->
+            </div>
+            <!---->
+            <div class="plugin-allbox">
+              <div data-key="Calendar_39" class="dplugin-box"
+                style="margin-top: 0px; margin-bottom: 0px; text-align: left;">
+                <div class="dplugin-mobile dplugin-mobile-dCalendar dCalendar-vie"
+                  style="font-size: 14px; font-family: 微软雅黑; font-weight: normal; font-style: normal; color: rgb(96, 98, 102); text-decoration: none; text-align: left; line-height: 20px; letter-spacing: 0px;">
+                  <span
+                    style="font-size: 14px; font-family: 微软雅黑; font-weight: normal; font-style: normal; color: rgb(96, 98, 102); text-decoration: none; text-align: left; line-height: 20px; letter-spacing: 0px;">2020-06-05</span>
+                </div>
+              </div>
+              <!---->
+            </div>
+            <div class="pluginnames"><span>辅导员意见</span>
+              <!---->
+            </div>
+            <!---->
+            <div class="plugin-allbox dplugin-mobile-rinput">
+              <div data-key="MultiInput_42" class="dplugin-box"
+                style="margin-top: 0px; margin-bottom: 0px; text-align: left;">
+                <div class="dplugin-mobile dplugin-mobile-dmultiInputs">
+                  <div class="dplugin-content-wrap"
+                    style="font-size: 14px; font-family: 微软雅黑; font-weight: normal; font-style: normal; color: rgb(96, 98, 102); text-decoration: none; text-align: left; line-height: 20px; letter-spacing: 0px; min-height: 46px;">
+                    同意</div>
+                </div>
+              </div>
+              <!---->
+            </div>
+            <div class="pluginnames"><span>辅导员审批人</span>
+              <!---->
+            </div>
+            <!---->
+            <div class="plugin-allbox dplugin-mobile-rinput">
+              <div data-key="User_46" class="dplugin-box"
+                style="margin-top: 0px; margin-bottom: 0px; text-align: left;">
+                <div class="dplugin-mobile dplugin-doneplugin dplugin-mobile-dinput"><span
+                    class="doneplugin-value doneplugin-value-userview"
+                    style="font-size: 14px; font-family: 微软雅黑; font-weight: normal; font-style: normal; color: rgb(96, 98, 102); text-decoration: none; text-align: left; line-height: 20px; letter-spacing: 0px;">
+                    李华
+                  </span></div>
+              </div>
+              <!---->
+            </div>
+            <div class="pluginnames"><span>辅导员审批时间</span>
+              <!---->
+            </div>
+            <!---->
+            <div class="plugin-allbox">
+              <div data-key="Calendar_50" class="dplugin-box"
+                style="margin-top: 0px; margin-bottom: 0px; text-align: left;">
+                <div class="dplugin-mobile dplugin-mobile-dCalendar dCalendar-vie"
+                  style="font-size: 14px; font-family: 微软雅黑; font-weight: normal; font-style: normal; color: rgb(96, 98, 102); text-decoration: none; text-align: left; line-height: 20px; letter-spacing: 0px;">
+                  <span
+                    style="font-size: 14px; font-family: 微软雅黑; font-weight: normal; font-style: normal; color: rgb(96, 98, 102); text-decoration: none; text-align: left; line-height: 20px; letter-spacing: 0px;">2020-06-05</span>
+                </div>
+              </div>
+              <!---->
+            </div>
+            <div class="pluginnames"><span>学院领导意见</span>
+              <!---->
+            </div>
+            <!---->
+            <div class="plugin-allbox dplugin-mobile-rinput">
+              <div data-key="MultiInput_43" class="dplugin-box"
+                style="margin-top: 0px; margin-bottom: 0px; text-align: left;">
+                <div class="dplugin-mobile dplugin-mobile-dmultiInputs">
+                  <div class="dplugin-content-wrap"
+                    style="font-size: 14px; font-family: 微软雅黑; font-weight: normal; font-style: normal; color: rgb(96, 98, 102); text-decoration: none; text-align: left; line-height: 20px; letter-spacing: 0px; min-height: 46px;">
+                    同意</div>
+                </div>
+              </div>
+              <!---->
+            </div>
+            <div class="pluginnames"><span>学院领导审批人</span>
+              <!---->
+            </div>
+            <!---->
+            <div class="plugin-allbox dplugin-mobile-rinput">
+              <div data-key="User_47" class="dplugin-box"
+                style="margin-top: 0px; margin-bottom: 0px; text-align: left;">
+                <div class="dplugin-mobile dplugin-doneplugin dplugin-mobile-dinput"><span
+                    class="doneplugin-value doneplugin-value-userview"
+                    style="font-size: 14px; font-family: 微软雅黑; font-weight: normal; font-style: normal; color: rgb(96, 98, 102); text-decoration: none; text-align: left; line-height: 20px; letter-spacing: 0px;">
+                    李雷
+                  </span></div>
+              </div>
+              <!---->
+            </div>
+            <div class="pluginnames"><span>学院领导审批时间</span>
+              <!---->
+            </div>
+            <!---->
+            <div class="plugin-allbox">
+              <div data-key="Calendar_51" class="dplugin-box"
+                style="margin-top: 0px; margin-bottom: 0px; text-align: left;">
+                <div class="dplugin-mobile dplugin-mobile-dCalendar dCalendar-vie"
+                  style="font-size: 14px; font-family: 微软雅黑; font-weight: normal; font-style: normal; color: rgb(96, 98, 102); text-decoration: none; text-align: left; line-height: 20px; letter-spacing: 0px;">
+                  <span
+                    style="font-size: 14px; font-family: 微软雅黑; font-weight: normal; font-style: normal; color: rgb(96, 98, 102); text-decoration: none; text-align: left; line-height: 20px; letter-spacing: 0px;">2020-06-05</span>
+                </div>
+              </div>
+              <!---->
+            </div>
+            <!---->
+            <div class="pluginnames"><span>确定出校时间</span>
+              <!---->
+            </div>
+            <!---->
+            <div class="plugin-allbox">
+              <div data-key="Calendar_81" class="dplugin-box"
+                style="margin-top: 0px; margin-bottom: 0px; text-align: left;">
+                <div class="dplugin-mobile dplugin-mobile-dCalendar dCalendar-vie"
+                  style="font-size: 14px; font-family: 微软雅黑; font-weight: normal; font-style: normal; color: rgb(96, 98, 102); text-decoration: none; text-align: left; line-height: 20px; letter-spacing: 0px;">
+                  <span
+                    style="font-size: 14px; font-family: 微软雅黑; font-weight: normal; font-style: normal; color: rgb(96, 98, 102); text-decoration: none; text-align: left; line-height: 20px; letter-spacing: 0px;"><div id="Time_out"></div></span></div>
+              </div>
+              <!---->
+            </div>
+            <div class="pluginnames"><span>确定返校时间</span>
+              <!---->
+            </div>
+            <!---->
+            <div class="plugin-allbox">
+              <div data-key="Calendar_83" class="dplugin-box"
+                style="margin-top: 0px; margin-bottom: 0px; text-align: left;">
+                <div class="dplugin-mobile dplugin-mobile-dCalendar dCalendar-vie"
+                  style="font-size: 14px; font-family: 微软雅黑; font-weight: normal; font-style: normal; color: rgb(96, 98, 102); text-decoration: none; text-align: left; line-height: 20px; letter-spacing: 0px;">
+                  <span
+                    style="font-size: 14px; font-family: 微软雅黑; font-weight: normal; font-style: normal; color: rgb(96, 98, 102); text-decoration: none; text-align: left; line-height: 20px; letter-spacing: 0px;"></span></div>
+              </div>
+              <!---->
+            </div>
+            <!---->
+            <!---->
+            <div class="pluginnames"><span>研工部审批</span>
+              <!---->
+            </div>
+            <!---->
+            <div class="plugin-allbox dplugin-mobile-rinput">
+              <div data-key="MultiInput_86" class="dplugin-box"
+                style="margin-top: 0px; margin-bottom: 0px; text-align: left;">
+                <div class="dplugin-mobile dplugin-mobile-dmultiInputs">
+                  <div class="dplugin-content-wrap"
+                    style="font-size: 14px; font-family: 微软雅黑; font-weight: normal; font-style: normal; color: rgb(96, 98, 102); text-decoration: none; text-align: left; line-height: 20px; letter-spacing: 0px; min-height: 46px;">
+                  </div>
+                </div>
+              </div>
+              <!---->
+            </div>
+            <!---->
+            <div class="pluginnames"><span>研工部审批人</span>
+              <!---->
+            </div>
+            <!---->
+            <div class="plugin-allbox dplugin-mobile-rinput">
+              <div data-key="User_88" class="dplugin-box"
+                style="margin-top: 0px; margin-bottom: 0px; text-align: left;">
+                <div class="dplugin-mobile dplugin-doneplugin dplugin-mobile-dinput"><span
+                    class="doneplugin-value doneplugin-value-userview"
+                    style="font-size: 14px; font-family: 微软雅黑; font-weight: normal; font-style: normal; color: rgb(96, 98, 102); text-decoration: none; text-align: left; line-height: 20px; letter-spacing: 0px;">
+
+                  </span></div>
+              </div>
+              <!---->
+            </div>
+            <!---->
+            <div class="pluginnames"><span>研工部审批时间</span>
+              <!---->
+            </div>
+            <!---->
+            <div class="plugin-allbox">
+              <div data-key="Calendar_90" class="dplugin-box"
+                style="margin-top: 0px; margin-bottom: 0px; text-align: left;">
+                <div class="dplugin-mobile dplugin-mobile-dCalendar dCalendar-vie"
+                  style="font-size: 14px; font-family: 微软雅黑; font-weight: normal; font-style: normal; color: rgb(96, 98, 102); text-decoration: none; text-align: left; line-height: 20px; letter-spacing: 0px;">
+                  <span
+                    style="font-size: 14px; font-family: 微软雅黑; font-weight: normal; font-style: normal; color: rgb(96, 98, 102); text-decoration: none; text-align: left; line-height: 20px; letter-spacing: 0px;">
+                  </span></div>
+              </div>
+              <!---->
+            </div>
+            <!---->
+            <div class="pluginnames"><span> </span> </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <script>
+              function Jump_Check() {
+                window.location.href = "./check.html";
+              }
+
+              function Jump_Exit() {
+                window.location.href = "./index.html";
+              }
+            </script>
+
+
+
+            <div class="wxformbtn m_start_btn">
+              <!---->
+              <div class="wxformbtn_center"><button onclick="javascrtpt:Jump_Check()">确认出校</button></div> 
+              <button class="savedraft active"onclick="javascrtpt:Jump_Exit()">取消</button>
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>
